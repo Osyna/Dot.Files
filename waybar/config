@@ -1,0 +1,73 @@
+{
+
+    "layer": "top",
+    "position": "top",
+
+    "height": 30,
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-bottom": 2,
+
+    "spacing": 0,
+    "modules-left": ["custom/arch","hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "network"],
+    
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true
+    },
+    
+    "clock": {
+        "format": "{:%Y-%m-%d   %H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    
+
+    "custom/arch": {
+        "format": "",
+        "on-click": "rofi -show drun",
+        "class": "custom-bar"
+    },
+
+    "network": {
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "  {ipAddress}",
+        "format-disconnected": "⚠",
+        "tooltip-format": "{essid}  ({signalStrength}%)",
+        "on-click": "networkmanager"
+
+    },
+
+
+
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
+        "format-icons": {
+            "default": [" ", " ", " ", " ", " ", " "]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+    },
+    
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    }
+}
